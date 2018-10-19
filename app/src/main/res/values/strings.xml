@@ -96,4 +96,16 @@
         <item>About Once a Week</item>
         <item>About Every Day</item>
     </string-array>
+
+
+    <string translatable="false" name="user_property_key_gardening_experience">gardening_experience</string>
+    <string-array translatable="false" name="user_property_values_gardening_experience">
+
+        <item>level_1</item> <!--rating never-->
+        <item>level_2</item><!--rating about once a year-->
+        <item>level_3</item><!--rating about once a month-->
+        <item>level_4</item><!--rating about once a week-->
+        <item>level_5</item><!--rating about once a day-->
+    </string-array>
+    
 </resources>

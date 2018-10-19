@@ -22,4 +22,15 @@ public class Analytics {
 
     }
 
+    public static void setUserPropertyGardeningExperience(Context context, int experienceIndex) {
+
+        String userPorpertyKey = context.getString(R.string.user_property_key_gardening_experience);
+
+        String [] userPropertyValues = context.getResources().getStringArray(R.array.user_property_values_gardening_experience);
+
+        FirebaseAnalytics.getInstance(context).setUserProperty(
+                userPorpertyKey,userPropertyValues[experienceIndex]
+        );
+
+    }
 }

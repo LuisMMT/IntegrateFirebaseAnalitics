@@ -131,6 +131,11 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                             return;
                         }
                         Preferences.setGardeningExperience(MainActivity.this, mRatingChoice);
+
+                        /**
+                         * add firebase Analitics my property
+                         */
+                        Analytics.setUserPropertyGardeningExperience(MainActivity.this,mRatingChoice);
                     }
                 })
                 .setNegativeButton(R.string.button_gardening_experience_cancel, new DialogInterface.OnClickListener() {
