@@ -65,6 +65,10 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
         // Kick off the loader
         getSupportLoaderManager().initLoader(PLANT_LOADER, null, this);
+
+        //call the line below te cause a crash
+        //Any crashes will reported to firebase with crash reporting
+        //fatalError();
     }
 
     @Override
@@ -171,5 +175,9 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
         mAdapter.swapCursor(null);
+    }
+
+    private void fatalError(){
+        throw new NullPointerException();
     }
 }

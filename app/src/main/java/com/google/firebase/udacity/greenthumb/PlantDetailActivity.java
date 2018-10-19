@@ -99,7 +99,6 @@ public class PlantDetailActivity extends AppCompatActivity
                 /**
                  * add event to firebase Analitics
                  */
-
                 Analytics.logEvenAddtoCart(this,mPlant,quantity);
                 break;
         }
