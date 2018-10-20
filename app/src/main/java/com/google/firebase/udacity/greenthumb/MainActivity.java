@@ -30,6 +30,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.crashlytics.android.Crashlytics;
 import com.google.firebase.udacity.greenthumb.data.DbContract.PlantEntry;
 import com.google.firebase.udacity.greenthumb.data.Preferences;
 
@@ -68,7 +69,10 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
         //call the line below te cause a crash
         //Any crashes will reported to firebase with crash reporting
-        //fatalError();
+        fatalError();
+
+        // call the line below to report a non-fatal crash
+       // reportNonFatalError();
     }
 
     @Override
@@ -79,6 +83,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             showExperienceDialog();
             Preferences.setFirstLoad(this, false);
         }
+
     }
 
     @Override
@@ -166,18 +171,29 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                 null,
                 null);
     }
-
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
         mAdapter.swapCursor(data);
     }
-
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
         mAdapter.swapCursor(null);
     }
-
     private void fatalError(){
         throw new NullPointerException();
     }
+
+    private void reportNonFatalError(){
+        try {
+            methodThatThrows();
+        } catch (Exception e) {
+            Crashlytics.logException(e);
+            // handle your exception here
+        }
+    }
+
+    public void methodThatThrows() throws Exception {
+        throw new Exception();
+    }
+
 }
